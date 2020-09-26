@@ -4,7 +4,7 @@ class TimeFormatted extends HTMLElement {
 		// element created
 	}
 
-	connectedCallback() {
+	render() {
 		// browser calls this method when the element is added to the document
 		// (can be called many times if an element is repeatedly added/removed)
 
@@ -21,6 +21,13 @@ class TimeFormatted extends HTMLElement {
 		}).format(date);
 	}
 
+	connectedCallback() {
+		if (!this.rendered) {
+			this.render();
+			this.rendered = true;
+		}
+	}
+
 	disconnectedCallback() {
 		// browser calls this method when the element is removed from the document
 		// (can be called many times if an element is repeatedly added/removed)
@@ -29,11 +36,20 @@ class TimeFormatted extends HTMLElement {
 	static get observedAttributes() {
 		return [
 			/* array of attribute names to monitor for changes */
+			"datetime",
+			"year",
+			"month",
+			"day",
+			"hour",
+			"minute",
+			"second",
+			"time-zone-name",
 		];
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
 		// called when one of attributes listed above is modified
+		this.render();
 	}
 
 	adoptedCallback() {

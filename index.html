@@ -11,7 +11,11 @@
   <!-- Load Chai -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
   <script>let assert = chai.assert;</script>
+
   <script src="./CustomizedComponents/TimeFormatted.js"></script>
+  <script src="./index.js"></script>
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test automation</title>
@@ -23,8 +27,8 @@
   <!-- Test result -->
   <div id="mocha"></div>
 
-  <time-formatted datetime="2019-12-01" year="numeric" month="long" day="numeric" hour="numeric" minute="numeric"
-    second="numeric" time-zone-name="short"></time-formatted>
+  <time-formatted id="time" year="numeric" month="long" day="numeric" hour="numeric" minute="numeric" second="numeric"
+    time-zone-name="short"></time-formatted>
 
   <!-- Run test -->
   <script>
