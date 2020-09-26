@@ -12,7 +12,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
   <script>let assert = chai.assert;</script>
 
-  <script src="./CustomizedComponents/TimeFormatted.js"></script>
+  <script src="./CustomComponents/TimeFormatted.js"></script>
+  <script src="./CustomizedComponents/HelloButton.js"></script>
+
   <script src="./index.js"></script>
 
 
@@ -29,6 +31,9 @@
 
   <time-formatted id="time" year="numeric" month="long" day="numeric" hour="numeric" minute="numeric" second="numeric"
     time-zone-name="short"></time-formatted>
+
+  <button is="hello-button">hi</button>
+  <hello-button>Hi2</hello-button>
 
   <!-- Run test -->
   <script>
