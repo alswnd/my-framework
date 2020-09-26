@@ -3,22 +3,9 @@
 
 <head>
   <link rel="stylesheet" href="./index.css">
-
-  <!-- Mocha css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
-  <!-- Mocha Framework -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
-  <script>mocha.setup('bdd'); // 기본 셋업</script>
-
-  <!-- Load Chai -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
-  <script>let assert = chai.assert;</script>
-
   <script src="./CustomComponents/TimeFormatted.js"></script>
   <script src="./CustomizedComponents/HelloButton.js"></script>
-
   <script src="./index.js"></script>
-
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,12 +13,6 @@
 </head>
 
 <body>
-  <!-- Test Script -->
-  <script src="test.js"></script>
-  <!-- Test result -->
-  <div id="mocha"></div>
-
-  <div id="elem"> </div>
 
   <time-formatted id="time" year="numeric" month="long" day="numeric" hour="numeric" minute="numeric" second="numeric"
     time-zone-name="short"></time-formatted>
@@ -40,23 +21,8 @@
   <hello-button>Hi2</hello-button>
 
   <show-hello name="Minjung"></show-hello>
-  <!-- Run test -->
-  <script>
-    // mocha.run();
-  </script>
 
-  <script>
-    elem.attachShadow({ mode: 'open' });
-    // shadow tree has its own style (2)
-    elem.shadowRoot.innerHTML = `
-    <style> p { font-weight: bold; } </style>
-    <p>Hello, John!</p>
-  `;
 
-    // <p> is only visible from queries inside the shadow tree (3)
-    alert(document.querySelectorAll('p').length); // 0
-    alert(elem.shadowRoot.querySelectorAll('p').length); // 1
-  </script>
 
 </body>
 
