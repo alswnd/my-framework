@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Mocha css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+
+  <!-- Mocha Framework -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+
+  <script>
+    mocha.setup('bdd'); // 기본 셋업
+  </script>
+
+  <!-- Load Chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+  <script>
+    let assert = chai.assert;
+  </script>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test automation</title>
+</head>
+
+<body>
+  <script>
+    function pow(x, n) {
+      return x ** n;
+    }
+  </script>
+
+  <!-- 테스트(describe, it...)가 있는 스크립트를 불러옵니다. -->
+  <script src="test.js"></script>
+
+  <!-- 테스트 결과를 id가 "mocha"인 요소에 출력하도록 합니다.-->
+  <div id="mocha"></div>
+
+  <!-- 테스트를 실행합니다! -->
+  <script>
+    mocha.run();
+  </script>
+
+</body>
+
+</html>
