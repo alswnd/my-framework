@@ -1,4 +1,4 @@
-class MyElement extends HTMLElement {
+class TimeFormatted extends HTMLElement {
 	constructor() {
 		super();
 		// element created
@@ -7,6 +7,18 @@ class MyElement extends HTMLElement {
 	connectedCallback() {
 		// browser calls this method when the element is added to the document
 		// (can be called many times if an element is repeatedly added/removed)
+
+		let date = new Date(this.getAttribute("datetime") || Date.now());
+
+		this.innerHTML = new Intl.DateTimeFormat("default", {
+			year: this.getAttribute("year") || undefined,
+			month: this.getAttribute("month") || undefined,
+			day: this.getAttribute("day") || undefined,
+			hour: this.getAttribute("hour") || undefined,
+			minute: this.getAttribute("minute") || undefined,
+			second: this.getAttribute("second") || undefined,
+			timeZoneName: this.getAttribute("time-zone-name") || undefined,
+		}).format(date);
 	}
 
 	disconnectedCallback() {
@@ -31,3 +43,6 @@ class MyElement extends HTMLElement {
 
 	// there can be other element methods and properties
 }
+
+// let the browser know that <my-element> is served by our new class
+customElements.define("time-formatted", TimeFormatted);
