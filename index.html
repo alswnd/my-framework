@@ -22,6 +22,20 @@
 
   <show-hello name="Minjung"></show-hello>
 
+  <template id="tmpl">
+    <div id="message">Hello, world!</div>
+  </template>
+
+  <div id="elem">Click me</div>
+
+  <script>
+    elem.onclick = () => {
+      elem.attachShadow({ mode: "open" });
+      debugger;
+      elem.shadowRoot.append(tmpl.content.cloneNode(true));
+      elem.shadowRoot.getElementById("message").innerHTML = "Hello from shadows";
+    }
+  </script>
 
 
 </body>
