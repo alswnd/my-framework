@@ -3,9 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="./index.css">
-  <script src="./CustomComponents/TimeFormatted.js"></script>
-  <script src="./CustomizedComponents/HelloButton.js"></script>
-  <script src="./index.js"></script>
+  <script type="module" src="./index.js"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,31 +11,7 @@
 </head>
 
 <body>
-
-  <time-formatted id="time" year="numeric" month="long" day="numeric" hour="numeric" minute="numeric" second="numeric"
-    time-zone-name="short"></time-formatted>
-
-  <button is="hello-button">hi</button>
-  <hello-button>Hi2</hello-button>
-
-  <show-hello name="Minjung"></show-hello>
-
-  <template id="tmpl">
-    <div id="message">Hello, world!</div>
-  </template>
-
-  <div id="elem">Click me</div>
-
-  <script>
-    elem.onclick = () => {
-      elem.attachShadow({ mode: "open" });
-      debugger;
-      elem.shadowRoot.append(tmpl.content.cloneNode(true));
-      elem.shadowRoot.getElementById("message").innerHTML = "Hello from shadows";
-    }
-  </script>
-
-
+  <div id="app"></div>
 </body>
 
 </html>

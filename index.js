@@ -1,15 +1,23 @@
-setInterval(() => time.setAttribute("datetime", new Date()), 1000);
+import Home from "./View/Home.js";
+import Page1 from "./View/Page1.js";
 
-customElements.define(
-	"show-hello",
-	class extends HTMLElement {
-		connectedCallback() {
-			const shadow = this.attachShadow({ mode: "open" });
+const routes = [
+	{ path: "/", component: Home },
+	{ path: "/page1", component: Page1 },
+];
 
-			shadow.innerHTML = `
-      <style>p { font-weight: bold; }</style>
-      <p>Hello, ${this.getAttribute("name")}</p>
-      `;
-		}
-	}
-);
+const parseLocation = () => {
+	return location.hash.slice(1).toLowerCase() || "/";
+};
+
+const findComponentByPath = (path, routes) => {
+	return routes.find((r) => r.path.match(new RegExp(`^\\${path}$`, "gm"))) || undefined;
+};
+
+const router = () => {
+	const path = parseLocation();
+	const { component } = findComponentByPath(path, routes) || {};
+	document.getElementById("app").innerHTML = component.render();
+};
+
+router();
