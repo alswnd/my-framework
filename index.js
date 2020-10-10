@@ -7,7 +7,7 @@ const routes = [
 ];
 
 const parseLocation = () => {
-	return location.hash.slice(1).toLowerCase() || "/";
+	return history.state?.pathname || "/";
 };
 
 const findComponentByPath = (path, routes) => {
@@ -19,5 +19,21 @@ const router = () => {
 	const { component } = findComponentByPath(path, routes) || {};
 	document.getElementById("app").innerHTML = component.render();
 };
+
+window.onpopstate = function (event) {
+	console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+
+document.getElementById("btn1").addEventListener("click", () => {
+	history.pushState({ pathname: "/" }, "home", "/");
+
+	router();
+});
+
+document.getElementById("btn2").addEventListener("click", () => {
+	history.pushState({ pathname: "/page1" }, "page1", "/page1");
+
+	router();
+});
 
 router();
