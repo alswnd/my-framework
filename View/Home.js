@@ -1,4 +1,4 @@
-class Home extends HTMLElement {
+export default class Home extends HTMLElement {
 	constructor() {
 		super();
 		// element created
@@ -29,7 +29,12 @@ class Home extends HTMLElement {
 		// (happens in document.adoptNode, very rarely used)
 	}
 
+	render() {
+		const app = document.getElementById("app");
+		app.innerHTML = `<div>This is home.</div>`;
+	}
+
 	// there can be other element methods and properties
 }
 
-export default Home;
+customElements.define("my-home", Home);

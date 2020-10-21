@@ -1,10 +1,6 @@
 import Home from "./View/Home.js";
-import Page1 from "./View/Page1.js";
 
-const routes = [
-	{ path: "/", component: Home },
-	{ path: "/page1", component: Page1 },
-];
+const routes = [{ path: "/", component: new Home() }];
 
 const parseLocation = () => {
 	return history.state?.pathname || "/";
@@ -17,7 +13,10 @@ const findComponentByPath = (path, routes) => {
 const router = () => {
 	const path = parseLocation();
 	const { component } = findComponentByPath(path, routes) || {};
-	document.getElementById("app").innerHTML = component.render();
+
+	console.log(typeof component);
+
+	component.render();
 };
 
 window.onpopstate = function (event) {
@@ -29,11 +28,4 @@ document.getElementById("btn1").addEventListener("click", () => {
 
 	router();
 });
-
-document.getElementById("btn2").addEventListener("click", () => {
-	history.pushState({ pathname: "/page1" }, "page1", "/page1");
-
-	router();
-});
-
 router();
