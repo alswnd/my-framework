@@ -1,35 +1,35 @@
 class Home extends HTMLElement {
 	constructor() {
 		super();
-	}
-
-	static get observedAttributes() {
-		// 모니터링 할 속성 이름
+		// element created
 	}
 
 	connectedCallback() {
-		// DOM에 추가되면 실행되는 method;
-		this.innerText = "hi!";
-		this.set();
+		// browser calls this method when the element is added to the document
+		// (can be called many times if an element is repeatedly added/removed)
 	}
 
 	disconnectedCallback() {
-		// DOM에서 제거면 실행되는 method
+		// browser calls this method when the element is removed from the document
+		// (can be called many times if an element is repeatedly added/removed)
 	}
 
-	attributeChangedCallback(attrName, oldVal, newVal) {
-		// 속성이 추가/제거/변경되면 실행되는 method
+	static get observedAttributes() {
+		return [
+			/* array of attribute names to monitor for changes */
+		];
 	}
 
-	adoptedCallback(oldDoc, newDoc) {
-		// 다른 Document에서 옮겨지면 실행되는 method
+	attributeChangedCallback(name, oldValue, newValue) {
+		// called when one of attributes listed above is modified
 	}
 
-	set() {
-		setTimeout(() => {
-			this.innerText = "my name is indio";
-		}, 1000);
+	adoptedCallback() {
+		// called when the element is moved to a new document
+		// (happens in document.adoptNode, very rarely used)
 	}
+
+	// there can be other element methods and properties
 }
 
 export default Home;
